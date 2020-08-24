@@ -22,10 +22,10 @@ $(function () {
             this.getData()
 
             var that = this
-            var moveCount = Math.floor(this.$box.width() / this.$item.outerWidth(true))
-            var move = moveCount * (this.$item.outerWidth(true))
-
+            
             $('.right').on('click', function () {
+                var moveCount = Math.floor(that.$box.width() / $('.classies li').outerWidth(true))
+                var move = moveCount * ($('.classies li').outerWidth(true))
                 if (that.isAnimate) return
                 that.isAnimate = true
                 var moveLeft = parseFloat(that.$classies.css('left')) - move
@@ -37,10 +37,12 @@ $(function () {
                 }, 400, function () {
                     that.isAnimate = false
                 })
-
             })
 
             $('.left').on('click', function () {
+                var moveCount = Math.floor(that.$box.width() / $('.classies li').outerWidth(true))
+                var move = moveCount * ($('.classies li').outerWidth(true))
+                
                 if (that.isAnimate) return
                 that.isAnimate = true
                 var left = parseFloat(that.$classies.css('left'))
@@ -192,10 +194,10 @@ $(function () {
                         that.play(ret.song[0])
                         if (that.collect[that.currentSong.sid]) {
                             $('.favo').addClass('choose')
-                        }else{
+                        } else {
                             $('.favo').removeClass('choose')
                         }
-                    }else{
+                    } else {
                         console.log('未加载到歌曲信息。。。')
                     }
                 })
@@ -205,7 +207,7 @@ $(function () {
             this.currentSong = song
             this.audio.src = song.url
 
-            $('.progress').css('width',0)
+            $('.progress').css('width', 0)
 
             $('.tips').text(this.album_name)
             $('.song').text(song.title)
